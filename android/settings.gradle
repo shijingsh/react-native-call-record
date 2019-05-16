@@ -1,3 +1,0 @@
-rootProject.name = 'call_record'
-
-include ':app'
