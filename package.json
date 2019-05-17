@@ -1,24 +1,30 @@
 {
   "name": "react-native-call-record",
   "version": "0.0.1",
-  "private": true,
+  "description": "get call record for react native",
+  "main": "index.js",
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest"
   },
-  "dependencies": {
-    "react": "16.8.3",
-    "react-native": "0.59.8"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mg365/react-native-call-record"
   },
-  "devDependencies": {
-    "@babel/core": "^7.4.4",
-    "@babel/runtime": "^7.4.4",
-    "babel-jest": "^24.8.0",
-    "jest": "^24.8.0",
-    "metro-react-native-babel-preset": "^0.54.1",
-    "react-test-renderer": "16.8.3"
+  "keywords": [
+    "native",
+    "react-native",
+    "call",
+    "call log",
+    "call record"
+  ],
+  "author": "liukefu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mg365/react-native-call-record/issues"
   },
-  "jest": {
-    "preset": "react-native"
+  "homepage": "https://github.com/mg365/react-native-call-recordr#readme",
+  "peerDependencies": {
+    "react-native": ">=0.33.0"
   }
 }
