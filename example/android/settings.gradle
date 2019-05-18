@@ -1,0 +1,5 @@
+rootProject.name = 'example'
+include ':react-native-call-record'
+project(':react-native-call-record').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-call-record/android')
+
+include ':app'
