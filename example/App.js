@@ -39,7 +39,7 @@ export default class App extends Component {
     loadCallRecords() {
         let _this = this;
         try {
-            CallLogs.getAll({}).then(c => {
+            CallLogs.getAll({limit:5,isDistinct:true}).then(c => {
                 _this.setState({list: c})
             });
         }

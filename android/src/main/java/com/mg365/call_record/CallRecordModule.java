@@ -70,7 +70,7 @@ public class CallRecordModule extends ReactContextBaseJavaModule {
         final int NAME_COLUMN_INDEX = cursor.getColumnIndex(Calls.CACHED_NAME);
         Map<String,String> recordMap = new HashMap<>();
 
-        while (cursor.moveToNext() && (limit < 0 || count++ < limit ) ) {
+        while (cursor.moveToNext() && (limit < 0 || count < limit ) ) {
             String phoneNumber = cursor.getString(NUMBER_COLUMN_INDEX);
             int duration = cursor.getInt(DURATION_COLUMN_INDEX);
             String name = cursor.getString(NAME_COLUMN_INDEX);
@@ -93,6 +93,7 @@ public class CallRecordModule extends ReactContextBaseJavaModule {
 
             recordMap.put(phoneNumber,"");
             result.pushMap(map);
+            count++;
         }
 
         cursor.close();
@@ -113,3 +114,4 @@ public class CallRecordModule extends ReactContextBaseJavaModule {
         }
     }
 }
+
