@@ -23,7 +23,7 @@ import com.facebook.react.bridge.WritableMap;
 public class CallRecordModule extends ReactContextBaseJavaModule {
 
     private Context context;
-
+    private ReadableMap options;
     private int limit = -1;
     private Boolean isDistinct = false;
 
@@ -37,8 +37,20 @@ public class CallRecordModule extends ReactContextBaseJavaModule {
         return "RNCallRecord";
     }
 
+    private void setConfiguration(final ReadableMap options) {
+        if(options==null){
+            return;
+        }
+        isDistinct = options.hasKey("isDistinct") && options.getBoolean("isDistinct");
+        limit = options.hasKey("limit") ? options.getInt("limit") : width;
+        this.options = options;
+    }
+
     @ReactMethod
     public void getAll(final ReadableMap options , Promise promise) {
+
+        setConfiguration(options);
+
         Cursor cursor = this.context.getContentResolver().query(CallLog.Calls.CONTENT_URI,
                 null, null, null, CallLog.Calls.DATE + " DESC");
 
@@ -49,7 +61,7 @@ public class CallRecordModule extends ReactContextBaseJavaModule {
             return;
         }
 
-        int callLogCount = 0;
+        int count = 0;
 
         final int NUMBER_COLUMN_INDEX = cursor.getColumnIndex(Calls.NUMBER);
         final int TYPE_COLUMN_INDEX = cursor.getColumnIndex(Calls.TYPE);
@@ -58,13 +70,13 @@ public class CallRecordModule extends ReactContextBaseJavaModule {
         final int NAME_COLUMN_INDEX = cursor.getColumnIndex(Calls.CACHED_NAME);
         Map<String,String> recordMap = new HashMap<>();
 
-        while (cursor.moveToNext() && (limit < 0 || callLogCount < limit ) ) {
+        while (cursor.moveToNext() && (limit < 0 || count++ < limit ) ) {
             String phoneNumber = cursor.getString(NUMBER_COLUMN_INDEX);
             int duration = cursor.getInt(DURATION_COLUMN_INDEX);
             String name = cursor.getString(NAME_COLUMN_INDEX);
 
             String timestampStr = cursor.getString(DATE_COLUMN_INDEX);
-            DateFormat df = SimpleDateFormat.getDateTimeInstance(SimpleDateFormat.MEDIUM, SimpleDateFormat.MEDIUM);
+            DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String dateTime = df.format(new Date(Long.valueOf(timestampStr)));
 
             String type = this.getCallType(cursor.getInt(TYPE_COLUMN_INDEX));
@@ -97,7 +109,7 @@ public class CallRecordModule extends ReactContextBaseJavaModule {
             case Calls.MISSED_TYPE:
                 return "MISSED_TYPE";
             default:
-                return "UNKNOWN";
+                return type;
         }
     }
 }
