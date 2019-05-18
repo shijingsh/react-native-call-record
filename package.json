@@ -1,6 +1,6 @@
 {
   "name": "react-native-call-record",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "get call record for react native",
   "main": "index.js",
   "scripts": {

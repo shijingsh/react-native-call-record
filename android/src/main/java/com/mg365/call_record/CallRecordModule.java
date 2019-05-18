@@ -42,7 +42,7 @@ public class CallRecordModule extends ReactContextBaseJavaModule {
             return;
         }
         isDistinct = options.hasKey("isDistinct") && options.getBoolean("isDistinct");
-        limit = options.hasKey("limit") ? options.getInt("limit") : width;
+        limit = options.hasKey("limit") ? options.getInt("limit") : limit;
         this.options = options;
     }
 
@@ -113,4 +113,3 @@ public class CallRecordModule extends ReactContextBaseJavaModule {
         }
     }
 }
-
