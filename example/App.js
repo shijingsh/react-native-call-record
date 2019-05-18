@@ -51,7 +51,7 @@ export default class App extends Component {
     render() {
         return (
             <SafeAreaView style={styles.container}>
-                <Text style={styles.welcome}>Welcome to React Native Contacts!</Text>
+                <Text style={styles.welcome}>Welcome to React Native!</Text>
                 <ScrollView style={{flex: 1}}>
                     <Text style={styles.instructions}>
                         {JSON.stringify(this.state.list, null, '\t')}

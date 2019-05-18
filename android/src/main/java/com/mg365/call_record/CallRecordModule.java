@@ -109,7 +109,7 @@ public class CallRecordModule extends ReactContextBaseJavaModule {
             case Calls.MISSED_TYPE:
                 return "MISSED_TYPE";
             default:
-                return type;
+                return type+"";
         }
     }
 }
