@@ -1,6 +1,13 @@
 # react-native-call-record
 get call record for react native 
 
+
+## Usage
+
+<a href="https://nodei.co/npm/react-native-call-record/">
+  <img src="https://nodei.co/npm/react-native-call-record.svg?downloads=true&downloadRank=true&stars=true">
+</a>
+
 ## Install
 
 ```
