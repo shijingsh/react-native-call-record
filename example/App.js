@@ -19,7 +19,7 @@ export default class App extends Component {
         };
     }
 
-    async componentWillMount() {
+    async UNSAFE_componentWillMount() {
         let _this = this;
         if (Platform.OS === 'android') {
             PermissionsAndroid.request(
